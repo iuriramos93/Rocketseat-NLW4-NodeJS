@@ -26,6 +26,12 @@ class UserController{
     await usersRepository.save(user);
     return response.json(user);
         }
+        async list(req:Request,res:Response){
+const usersRepository = getRepository(User);
+const users = await usersRepository.query("Select * from users");
+
+return res.json(users);
+        }
 }
 
 export{UserController};
